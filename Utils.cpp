@@ -10,7 +10,7 @@ char **Utils::splitStr(char *string, int stringLength, char splitter) {
 
     std::cout << stringLength << std::endl;
 
-    char **slices = new char*;
+    char **slices = new char*[20];
     int slicesCount = 0;
 
     for (int i = 0; i < stringLength; ++i) {
