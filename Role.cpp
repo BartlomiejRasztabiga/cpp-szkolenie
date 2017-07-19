@@ -5,15 +5,17 @@
 #include "Role.h"
 
 Role::Role() {
-
+    this->role = new char[20];
 }
 
 Role::Role(const char *role) {
+    this->role = new char[20];
+
     this->role = role;
 }
 
 Role::~Role() {
-    delete role;
+    delete[] role;
 }
 
 const char * Role::getRoleName() {

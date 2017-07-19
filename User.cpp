@@ -7,10 +7,18 @@
 #include "User.h"
 
 User::User() {
-
-}
+    this->username = new char[20];
+    this->password = new char[20];
+    this->name = new char[40];
+    this->roles = new Role[10];
+};
 
 User::User(char *username, char *password, char *name, Role *roles, int numberOfRoles) {
+    this->username = new char[20];
+    this->password = new char[20];
+    this->name = new char[40];
+    this->roles = new Role[10];
+
     this->username = username;
     this->password = password;
     this->name = name;
@@ -19,8 +27,9 @@ User::User(char *username, char *password, char *name, Role *roles, int numberOf
 }
 
 User::~User() {
-    delete username;
-    delete password;
+    delete[] username;
+    delete[] password;
+    delete[] name;
     delete[] roles;
 }
 
@@ -60,8 +69,6 @@ void User::setName(char *name) {
     this->name = name;
 }
 
-
-
 Role User::getRole(const char *roleName) {
     for (int i = 0; i < numberOfRoles; ++i) {
         const char *roleNameInList = roles[i].getRoleName();
@@ -70,13 +77,34 @@ Role User::getRole(const char *roleName) {
 }
 
 char *User::getFirstName() {
-    for (int i = 0; i < (sizeof(name) / sizeof(*name)); ++i) {
-        std::cout << name[i];
+    char *nameStr = new char[40];
+    strcpy(nameStr, name);
+
+    char *splitted;
+    splitted = strtok(nameStr, " ,.-");
+    char *firstName = new char[40];
+    strcpy(firstName, splitted);
+
+    while (splitted != NULL) {
+        splitted = strtok(NULL, " ,.-");
     }
 
-    return nullptr;
+    delete[] nameStr;
+
+    return firstName;
 }
 
 char *User::getLastName() {
-    return nullptr;
+    char *nameStr = new char[40];
+    strcpy(nameStr, name);
+
+    char *splitted;
+    splitted = strtok(nameStr, " ,.-");
+
+    delete[] nameStr;
+
+    while (splitted != NULL) {
+        splitted = strtok(NULL, " ,.-");
+        return splitted;
+    }
 }

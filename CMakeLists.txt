@@ -3,5 +3,5 @@ project(cpp_szkolenie)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp Role.cpp Role.h User.cpp User.h)
+set(SOURCE_FILES main.cpp Role.cpp Role.h User.cpp User.h Utils.cpp Utils.h)
 add_executable(cpp_szkolenie ${SOURCE_FILES})
