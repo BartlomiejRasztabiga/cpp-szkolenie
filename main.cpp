@@ -30,5 +30,10 @@ int main() {
 
     char strToSplit[] = "Bartlomiej Rasztabiga";
     char splitter = ' ';
-    Utils::splitStr(strToSplit, (sizeof(strToSplit) / sizeof(*strToSplit)), splitter);
+    char** splittedName = Utils::splitStr(strToSplit, (sizeof(strToSplit) / sizeof(*strToSplit)), splitter);
+    char* firstName = splittedName[0];
+    char* lastName = splittedName[1];
+
+    std::cout << firstName << std::endl;
+    std::cout << lastName << std::endl;
 }
